@@ -34,7 +34,9 @@ public class Conteos extends AppCompatActivity {
                 integrator.setCameraId(0);
                 integrator.setBeepEnabled(false);
                 integrator.setBarcodeImageEnabled(false);
+                integrator.setOrientationLocked(false);
                 integrator.initiateScan();
+
             }
         });
     }
