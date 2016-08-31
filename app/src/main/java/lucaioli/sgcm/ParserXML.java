@@ -66,7 +66,7 @@ public class ParserXML {
             String name = parser.getName();
 
             switch (name) {
-                case ETIQUETA_PRODUCTO:
+                case ETIQUETA_CODIGO:
                     Codigo = leerCodigo (parser);
                     break;
                 case ETIQUETA_DESCRIPCION:
@@ -86,25 +86,25 @@ public class ParserXML {
     }
 
     private int leerCodigo(XmlPullParser parser) throws IOException, XmlPullParserException {
-        parser.require(XmlPullParser.START_TAG, ns, ETIQUETA_PRODUCTO);
+        parser.require(XmlPullParser.START_TAG, ns, ETIQUETA_CODIGO);
         int Codigo = Integer.parseInt(obtenerTexto(parser));
-        parser.require(XmlPullParser.END_TAG, ns, ETIQUETA_PRODUCTO);
+        parser.require(XmlPullParser.END_TAG, ns, ETIQUETA_CODIGO);
         return Codigo;
     }
 
     private String leerDescripcion(XmlPullParser parser) throws IOException, XmlPullParserException {
-        String descripcion = null;
+        /*String descripcion = null;*/
         parser.require(XmlPullParser.START_TAG, ns, ETIQUETA_DESCRIPCION);
         /* String prefijo = parser.getPrefix(); */
-        descripcion = obtenerTexto(parser);
+        String descripcion = obtenerTexto(parser);
         parser.require(XmlPullParser.END_TAG, ns, ETIQUETA_DESCRIPCION);
         return descripcion;
     }
 
     private long leerBarcode(XmlPullParser parser) throws IOException, XmlPullParserException {
-        parser.require(XmlPullParser.START_TAG, ns, ETIQUETA_PRODUCTO);
+        parser.require(XmlPullParser.START_TAG, ns, ETIQUETA_BARCODE);
         long Barcode = Long.parseLong(obtenerTexto(parser));
-        parser.require(XmlPullParser.END_TAG, ns, ETIQUETA_PRODUCTO);
+        parser.require(XmlPullParser.END_TAG, ns, ETIQUETA_BARCODE);
         return Barcode;
     }
 
